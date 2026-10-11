@@ -1,0 +1,16 @@
+[Unit]
+Description=miningcore-live-rigs (realtime rig events)
+After=docker.service
+Requires=docker.service
+
+[Service]
+Environment=MCEV_CONTAINERS=miningcore
+Environment=MCEV_PORT=4020
+ExecStart=/usr/bin/python3 /opt/mcev/mcev.py
+Restart=always
+RestartSec=5
+User=mcev
+Group=docker
+
+[Install]
+WantedBy=multi-user.target
